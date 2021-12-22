@@ -1,0 +1,34 @@
+message = "V NZ YRNEAVAT CLGUBA JAGA FUR PBQRF NPNQRZL"
+
+d_rot13={}
+
+ABC = ["A","B","C","d","E","F","G","H","I","J","K","L","M",
+       "N","O","P","Q","R","S","T","U","V","w","X","Y","Z"]
+for letter in ABC:
+       d_rot13[letter]=ABC[(ABC.index(letter) + 13) %26]
+
+
+abc = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
+          "n","o","p","q","r","s","p","u","v","w","x","y","z"]
+for letter in abc:
+       d_rot13[letter]=abc[(abc.index(letter) + 13) %26]
+
+
+
+def encode(string):
+    l_list_conversion = []
+    for letter in string:
+        if letter in d_rot13:
+            l_list_conversion.append(d_rot13[letter])
+        elif letter.isspace():
+            l_list_conversion.append(letter)
+                  
+    return''.join(l_list_conversion)
+
+print(f"Encode {message}:")
+
+print(encode(message))
+
+print(f"New decode it:")
+
+print(encode(encode(message)))
